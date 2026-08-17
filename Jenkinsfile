@@ -61,25 +61,25 @@ pipeline {
                 sh 'ls -lh *.tar.gz'
             }
         }
-        stage('Credential Demo') {
-            steps {
-                withCredentials([
-                    usernamePassword(
-                        credentialsId: 'demo-login-creds',
-                        usernameVariable: 'DEMO_USERNAME',
-                        passwordVariable: 'DEMO_PASSWORD'
-                    )
-                ]) {
-                    sh '''
-                    echo "Credential has been loaded"
-                    echo "Username variable is available"
-                    test -n "$DEMO_USERNAME"
-                    test -n "$DEMO_PASSWORD"
-                    echo "Credential validation completed"
-                    '''
-                }
-            }
-        }
+        // stage('Credential Demo') {
+        //     steps {
+        //         withCredentials([
+        //             usernamePassword(
+        //                 credentialsId: 'demo-login-creds',
+        //                 usernameVariable: 'DEMO_USERNAME',
+        //                 passwordVariable: 'DEMO_PASSWORD'
+        //             )
+        //         ]) {
+        //             sh '''
+        //             echo "Credential has been loaded"
+        //             echo "Username variable is available"
+        //             test -n "$DEMO_USERNAME"
+        //             test -n "$DEMO_PASSWORD"
+        //             echo "Credential validation completed"
+        //             '''
+        //         }
+        //     }
+        // }
         stage('Deployment Simulation') {
             steps {
                 echo "Deploying ${params.APP_VERSION}"
